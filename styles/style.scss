@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700&display=swap');
+
+:root {
+
+    //Colors
+    --color-white: #ffffff;
+    --color-black: #000000;
+
+    --color-dark-green: #373D2F;
+    --color-green: #7C846D;
+    --color-dark-beige: #C9BDAB;
+    --color-beige: #EEEBE4;
+
+    //Font
+    --font-primary: 'Inter';
+
+    // Font sizes
+	--size-h1: 52px;
+	--size-h2: 40.5px;
+	--size-h3: 28.5px;
+	--size-h4: 21px;
+    --size-p: 15px;
+
+    --size-mobile-h1: 32px;
+	--size-mobile-h2: 28px;
+	--size-mobile-h3: 24px;
+	--size-mobile-h4: 16.5px;
+    --size-mobile-p: 14.25px;
+
+    // Font weight
+	--font-weight: 400;
+	--font-weight-bold: 700;
+
+    // Container settings
+	--padding-side: 4rem;
+	--padding-side-tablet: 2rem;
+	--padding-side-mobile: 1rem;
+
+	--contained-width-standard: 1400px;
+	--contained-width-small: 1000px;
+	--contained-width-extra-small: 850px;
+
+}
+
+* {
+	font-family: var(--font-primary);
+	margin: unset;
+	box-sizing: border-box;
+}
+
+.contained {
+	max-width: calc(var(--contained-width-standard) + var(--padding-side) * 2);
+	margin: auto;
+	padding-left: var(--padding-side);
+	padding-right: var(--padding-side);
+
+	&.small {
+		max-width: calc(var(--contained-width-small) + var(--padding-side) * 2);
+	}
+
+	&.extra-small {
+		max-width: calc(var(--contained-width-extra-small) + var(--padding-side) * 2);
+	}
+
+}
+
+/* === 1. Fonts and Types === */
+
+h1,
+.h1 {
+	font-size: var(--size-h1);
+	font-family: var(--font-primary);
+
+	font-weight: var(--font-weight);
+
+	.mobile & {
+		font-size: var(--size-mobile-h1);
+	}
+}
+
+h2,
+.h2 {
+	font-size: var(--size-h2);
+	font-family: var(--font-primary);
+
+	font-weight: var(--font-weight);
+
+	.mobile & {
+		font-size: var(--size-mobile-h2);
+	}
+}
+
+h3,
+.h3 {
+	font-size: var(--size-h3);
+	font-family: var(--font-primary);
+
+	font-weight: var(--font-weight);
+
+	.mobile & {
+		font-size: var(--size-mobile-h3);
+	}
+}
+
+h4,
+.h4 {
+	font-size: var(--size-h4);
+	font-family: var(--font-primary);
+
+	font-weight: var(--font-weight);
+
+	.mobile & {
+		font-size: var(--size-mobile-h4);
+	}
+}
+
+.p {
+	font-size: var(--size-p);
+    font-family: var(--font-primary);
+
+    font-weight: var(--font-weight);
+
+	.mobile & {
+		font-size: var(--size-mobile-p);
+	}
+}
+
+.p-bold {
+	font-size: var(--size-p);
+    font-family: var(--font-primary);
+
+    font-weight: var(--font-weight-bold);
+
+	.mobile & {
+		font-size: var(--size-mobile-p);
+        font-weight: var(--font-weight-bold);
+	}
+}
