@@ -2,16 +2,20 @@ import React from 'react'
 import Wordpress from '../src/utils/Wordpress'
 import BlockRenderer from '../src/BlockRenderer/blockrenderer'
 
+//Get current page by slug
 
 export async function getStaticProps(context) {
-   const page = await Wordpress.getPageBySlug(context.params.slug)
 
+   const page = await Wordpress.getPageBySlug(context.params.slug)
+   
     return {
         props: {
             page
         }
     }
 }
+
+//Loops all paths 
 
 export async function getStaticPaths() {
     const pages = await Wordpress.getPages()
@@ -25,11 +29,9 @@ export async function getStaticPaths() {
 }
 
 export default function Page({ page }) {
-    console.log(page)
 	return (
         <>
-            <BlockRenderer blocks={page?.acf} />
-            {/* {page.acf.test} */}
+            <BlockRenderer blocks={page?.acf?.block} />
         </> 
 	
 	)
