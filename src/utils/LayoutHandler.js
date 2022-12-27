@@ -9,7 +9,7 @@ import { useEffect, useState } from "react"
  const settings = {
     breakpoints: {
         mobile: {
-            width: 500,
+            width: 750,
         },
         tablet: {
             width: 1000,
