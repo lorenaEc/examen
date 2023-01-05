@@ -10,7 +10,6 @@ import Link from "next/link";
 export default function Category({product}) {
   const {cart, setcart} = useContext(CartContext)
   const [qty, setQty] = useState(1)
-    // console.log(product)
    
     const addToCart = () => {
 
@@ -21,7 +20,6 @@ export default function Category({product}) {
           console.log(cart[i])
         }
       }
-      console.log(cart)
       let exsistInCart = false;
       for (const cartProduct of cart) {
         if(cartProduct.id === product.id) {
