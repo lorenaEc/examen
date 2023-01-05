@@ -1,3 +1,5 @@
+import react from "react"
+import HeroWordpress from "../blocks/Hero/Hero.Wordpress"
 
 
 export default function BlockRenderer({blocks}) {
@@ -6,9 +8,8 @@ export default function BlockRenderer({blocks}) {
     return blocks?.map((block, index) => {
         switch(block.acf_fc_layout) {
             case 'hero':
-                return <div key={index}>Test</div>
-            case 'split':
-                return <div key={index}>split</div>
+                return <HeroWordpress key={index} data={block}/>
+            
         }
     })
 }
