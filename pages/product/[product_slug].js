@@ -16,7 +16,7 @@ export default function Category({product}) {
       for(let i = 0; i < cart.length; i++) {
         let cartProduct = cart[i]
         if(cartProduct.id === product.id) {
-          setcart( [...cart,{...cart[i], quantity: cart[i].quantity + qty}]) 
+          cart[i].quantity += qty
           console.log(cart[i])
         }
       }
