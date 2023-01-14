@@ -1,25 +1,21 @@
 import react from "react";
-import Image from "next/image";
 import styled from "styled-components";
 import { useDevices } from "../../utils/LayoutHandler";
 
-const Hero = ({ image, title, description, layout = 'bottom-right' }) => {
+const Hero = ({ image, title, description, layout }) => {
+    console.log(layout)
     const [mobile, tablet, desktop] = useDevices()
     return (
-        <Style className={`hero`}>
-            	{image?.src && <Image
-                 src={image.src} 
-                 alt={image.alt} 
-                 width={1920} 
-                 height={800} 
-                 loading={'eager'} 
-                 priority={true} />}
-
+        <Style className={`hero`} style={{
+            backgroundImage: `url(${image.src})`
+        }}>
+            <div className="overlay" />
             <div className='contained'>
-                <div className={`${layout == 'centered' ? 'containerCenter' : 'container'}`}>
-                    <h1 className='h1' dangerouslySetInnerHTML={{ __html: title }} />
-                    <p className='p' dangerouslySetInnerHTML={{ __html: description }} />
-
+                <div className={`${layout === 'centered' ? 'containerCenter' : 'bottomRight'}`}>
+                    <div>
+                  {title && <h1>{title}</h1>}
+                    <div dangerouslySetInnerHTML={{ __html: description }} />
+                    </div>
                 </div>
             </div>
 
@@ -33,7 +29,58 @@ export default Hero;
 
 const Style = styled.section`
 color: var(--color-white);
-min-height: 70vh;
-opacity: 0.65 !important;
-background-color: #303030 !important;
+height: 100vh;
+background: linear-gradient(0deg, rgba(0,0,0,0.6923144257703081) 0%, rgba(0,212,255,0) 100%);
+background-size: cover;
+background-position: center;
+
+/* .mobile & {
+    
+    height: 70vh;
+} */
+
+
+    .overlay {
+        background: linear-gradient(0deg, rgba(0,0,0,0.6923144257703081) 0%, rgba(0,212,255,0) 100%);
+        height: 100vh;
+        width: 100%;
+        z-index: 2;
+        position: absolute;
+    }
+
+    .contained {
+        height: 100%;
+        width: 100%;
+        z-index: 3;
+        position: absolute;
+
+        /* .mobile & {
+            display: none;
+        } */
+
+        .containerCenter {
+            z-index: 3;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            h1 {
+                text-align: center;
+            }
+        }
+
+        .bottomRight {
+            z-index: 3;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: flex-end;
+            padding-bottom: 120px;
+        }
+    }
 `

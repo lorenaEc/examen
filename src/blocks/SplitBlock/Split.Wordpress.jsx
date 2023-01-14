@@ -1,9 +1,10 @@
 import React from 'react'
-import Hero from './Hero'
+import Split from './Split'
 
-export default function HeroWordpress({ data }) {
+export default function SplitWordpress({ data }) {
+    console.log(data)
     return (
-        <Hero
+        <Split
         image={{
             src: data.image.url,
             alt: data.image.alt,
@@ -12,7 +13,8 @@ export default function HeroWordpress({ data }) {
         title={data.title}
         description={data.description}
         layout={data.layout}
+        link={data.link}
+        buttonTitle={data.buttonTitle}
     />
     )
 }
-
