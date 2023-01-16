@@ -49,7 +49,7 @@ return (
 
 
 const Style = styled.footer`
-   height: 300px;
+   min-height: 300px;
    background-color: var(--color-dark-green);
    color: var(--color-white);
 
@@ -58,9 +58,12 @@ const Style = styled.footer`
    }
 
    .contained{
+
         display: flex;
         padding-top: 40px;
-        gap:100px;
+        justify-content: space-between;
+        /* gap:100px; */
+        flex-wrap: wrap;
 
 
         .navContainer{
@@ -91,10 +94,19 @@ const Style = styled.footer`
 
             display: flex;
             flex-direction: column;
+
+            .mobile & {
+                width: 100%;
+                display: flex;
+                flex-direction: row;
+                gap:20px;
+                margin: 30px 0;
+            }
             
             .h2{
             color: var(--color-white);
             text-decoration: none;
+
 
             } 
 
@@ -102,7 +114,16 @@ const Style = styled.footer`
                 padding-top: 40px;
                 display: flex;
                 justify-content:space-between;
+
+                .mobile & {
+                padding-top: 0;
+                width: 60px;
+                height: 60px;
+                gap:10px;
             }
+
+            }
+
         }
    }
 `

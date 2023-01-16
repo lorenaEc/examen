@@ -1,16 +1,26 @@
-import React, { use } from "react";
+import React from "react";
 import Link from "next/link";
 import styled from "styled-components";
 import MobileMenu from "../popups/MobileMenu";
 import { useDevices } from "../utils/LayoutHandler";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function Menu() {
     const [toggle, setToggle] = useState(false)
+    const [scrollPx, setScrollPx] = useState(0)
     const [mobile, tablet, desktop] = useDevices();
-    // console.log(mobile, tablet, desktop)
-    // console.log(toggle)
 
+    //Get Y px when you scroll
+    useEffect(() => {
+        const scrollY = () => {
+            setScrollPx(window.scrollY) 
+        }
+    
+        addEventListener('scroll', scrollY)
+    }, [])
+
+    
+    //Open mobile an tablet meny
     const toggleMenu = () => {
         setToggle(true)
     }
@@ -18,10 +28,11 @@ export default function Menu() {
     return (
         <>
         <Styled>
-            <div className="contained">
+        <div className={ scrollPx > 100 ? 'scroll' : 'scrollOff'}>
+            <div className= 'contained'>
                 <div className="menuContainer">
                     <Link className="h2" href={'/'}>LOGO</Link>
-                    {!mobile ?
+                    {desktop ?
                         <>
                             <div className="navContainer">
                                 <div className="dropDownContainer">
@@ -70,8 +81,9 @@ export default function Menu() {
 
 
             </div>
+            </div>
         </Styled>
-        {mobile &&
+        {!desktop &&
         <MobileMenu active={toggle} setToggle={setToggle} />
          }
         </>
@@ -80,15 +92,31 @@ export default function Menu() {
 }
 
 const Styled = styled.header`
+position: fixed;
+z-index: 998;
+width: 100vw;
+
+.scrollOff {
+    background-color: transparent;
+    transition: ease .4s;
+}
+
+.scroll {
+    background-color: var(--color-white);
+    transition: ease .4s;
+}
 
 .contained{
+    
     .menuContainer{
-        padding-top: 30px;
-        padding-bottom: 30px;
+        padding-top: 10px;
+        padding-bottom: 10px;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
+        margin-bottom: -100px;
+        
 
         .h2{
            color: var(--color-dark-green);
