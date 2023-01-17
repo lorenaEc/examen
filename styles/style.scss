@@ -17,11 +17,11 @@
 	--font-secundary: 'Inria-Serif';
 
     // Font sizes
-	--size-h1: 52px;
-	--size-h2: 40.5px;
-	--size-h3: 28.5px;
-	--size-h4: 21px;
-    --size-p: 15px;
+	--size-h1: 60px;
+	--size-h2: 50px;
+	--size-h3: 30px;
+	--size-h4: 25px;
+    --size-p: 18px;
 
     --size-mobile-h1: 32px;
 	--size-mobile-h2: 28px;
@@ -115,7 +115,7 @@ h4,
 		font-size: var(--size-mobile-h4);
 	}
 }
-
+p,
 .p {
 	font-size: var(--size-p);
     font-family: var(--font-primary);
