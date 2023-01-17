@@ -2,7 +2,6 @@ import React from 'react'
 import Split from './Split'
 
 export default function SplitWordpress({ data }) {
-    console.log(data)
     return (
         <Split
         image={{

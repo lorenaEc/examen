@@ -38,7 +38,10 @@ export default Split;
 
 const Style = styled.section`
 color: var(--color-dark-green);
-min-height: 500px;
+
+.desktop & {
+max-height: 80vh;
+}
 
 &.split{
     display: flex;
@@ -57,25 +60,28 @@ min-height: 500px;
     
     .left{
         width: 50%;
-        height: 500px;
 
         .mobile &, .tablet &{
              width:100%;
+             height: 70vh;
     }
 
         .image {
+
             width: 100%!important;
             height: 100%!important;
             object-fit: cover;
+            object-position: top;
         }
     }
 
     .rightBox {
         width: 50%;
-        height: 500px; 
 
         .mobile &, .tablet &{
              width:100%;
+             height: 70vh;
+
     }
 
         
