@@ -2,6 +2,7 @@ import react from "react"
 import HeroWordpress from "../blocks/Hero/Hero.Wordpress"
 import TextBlockWordpress from "../blocks/TextBlock/TextBlock.Wordpress"
 import SplitWordpress from "../blocks/SplitBlock/Split.Wordpress"
+import CollectionWordpress from "../blocks/Collection/Collection.Wordpress"
 
 
 export default function BlockRenderer({blocks}) {
@@ -13,7 +14,9 @@ export default function BlockRenderer({blocks}) {
             case 'text':
                 return <TextBlockWordpress key={index} data={block} />
             case 'split':
-                return <SplitWordpress key={index} data={block} />        
+                return <SplitWordpress key={index} data={block} />     
+            case 'collection':
+                return <CollectionWordpress key={index} data={block} />          
             
         }
     })
