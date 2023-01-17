@@ -3,7 +3,6 @@ import styled from "styled-components";
 import { useDevices } from "../../utils/LayoutHandler";
 
 const Hero = ({ image, title, description, layout }) => {
-    console.log(layout)
     const [mobile, tablet, desktop] = useDevices()
     return (
         <Style className={`hero`} style={{
