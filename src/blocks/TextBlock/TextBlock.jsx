@@ -8,19 +8,19 @@ import { useDevices } from '../../utils/LayoutHandler'
  */
 
 const TextBlock = ({ title, description, text, link, linkText, textColor, backgroundColor, ...rest }) => {
-const [mobile, tablet, desktop] = useDevices()
+    const [mobile, tablet, desktop] = useDevices()
     return (
-        <Style style={{'--backgroundColor': backgroundColor, '--textColor': textColor}}>
+        <Style style={{ '--backgroundColor': backgroundColor, '--textColor': textColor }}>
             <div className='contained'>
                 <div className='left'>
                     <h2 className='h1'>{title}</h2>
-                    <div className='p'  dangerouslySetInnerHTML={{ __html: description }} />
-                   {!desktop && <Link className='link' href={link}>{linkText}</Link>}
+                    <div className='p' dangerouslySetInnerHTML={{ __html: description }} />
+                    {!desktop && <Link className='link' href={link}>{linkText}</Link>}
 
                 </div>
 
                 <div className='right'>
-                    <div  dangerouslySetInnerHTML={{ __html: text }} ></div>
+                    <div dangerouslySetInnerHTML={{ __html: text }} ></div>
                     <Link className='link' href={link}>{linkText}</Link>
 
                 </div>
@@ -39,6 +39,8 @@ height: 60vh;
 background-color: var(--backgroundColor);
 color: var(--textColor);
 padding:100px 0;
+display: flex;
+
 
     .mobile &, .tablet &{
         height: auto;
