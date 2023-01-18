@@ -10,7 +10,15 @@ function MyApp({ Component, pageProps }) {
   LayoutHandler.listen()
   const [cart, setcart] = useState([])
   const cartValue = useMemo(() => ({cart, setcart}), [cart, setcart])
-  console.log(cart)
+
+  useEffect(() =>{
+    let storage = localStorage.getItem("cart")
+    const localCart = JSON.parse(storage)
+
+    setcart(storage ? localCart : [])
+    
+  },[])
+
 
   // if (windowLoaded) return <></>
   return(

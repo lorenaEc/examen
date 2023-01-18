@@ -24,6 +24,14 @@ export default class Woocommerce {
         return dataJson     
     }
 
+    static async getCategoryBySlug(slug){
+        if(!slug) return
+        const data = await fetch(`${url}/wp-json/wc/v3/products/categories?consumer_key=${key}&consumer_secret=${secret}&slug=${slug}`)
+        const dataJson = await data.json()
+
+        return dataJson
+    }
+
     static async getProductsByCategory(category) {
         const data = await fetch(`${url}/wp-json/wc/v3/products?consumer_key=${key}&consumer_secret=${secret}&per_page=99&category=${category}`)
         const dataJson = await data.json()
