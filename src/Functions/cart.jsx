@@ -49,7 +49,11 @@ export default class Cart{
         if(qty>1) {
           setQty(qty - 1)
         }
-      }
+    }
+
+    static cartUpdate(newCart) {
+        localStorage.setItem("cart", JSON.stringify(newCart));
+    }
 }
  
 
