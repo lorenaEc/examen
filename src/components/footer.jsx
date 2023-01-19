@@ -26,7 +26,7 @@ return (
             
 
             <div className="socialContainer">
-            <Link className="h2" href={'/'}>LOGO</Link>
+            <Link className="h2" href={'/'}><img src="/icons/footer.svg"/></Link>
 
             <div className="icons">
                 <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -65,6 +65,10 @@ const Style = styled.footer`
         /* gap:100px; */
         flex-wrap: wrap;
 
+        .mobile & {
+            justify-content: space-around;
+        }
+
 
         .navContainer{
             display:flex;
@@ -99,7 +103,7 @@ const Style = styled.footer`
                 width: 100%;
                 display: flex;
                 flex-direction: row;
-                gap:20px;
+                justify-content:space-around;
                 margin: 30px 0;
             }
             
@@ -117,8 +121,8 @@ const Style = styled.footer`
 
                 .mobile & {
                 padding-top: 0;
-                width: 60px;
-                height: 60px;
+                width: 80px;
+                height: 80px;
                 gap:10px;
             }
 
