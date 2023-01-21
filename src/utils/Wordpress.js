@@ -12,8 +12,14 @@ export default class Wordpress {
         if(!slug) return
         const page = await fetch(`${url}/wp-json/wp/v2/pages?slug=${slug}`)
         const pageJson = await page.json()
-        // if (typeof window !== 'undefined')
 
         return pageJson[0]
+    }
+
+    static async getHomePage() {
+        const page = await fetch(`${url}/wp-json/wp/v2/pages/164`)
+        const pageJson = await page.json()
+
+        return pageJson
     }
 }
