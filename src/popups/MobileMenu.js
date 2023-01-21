@@ -41,9 +41,9 @@ function MobileMenu({ active, setToggle }) {
     )
 }
 const Styled = styled.div`
-width: 100vw;
+width: 100%;
 height: 100vh;
-position: absolute;
+position: fixed;
 transition: ease .4s;
 top: 0;
 z-index: 999;
@@ -66,7 +66,7 @@ opacity: 0;
     .overlay {
         background-color: black;
         opacity: .6;
-        width: 100vw;
+        width: 100%;
         height: 100vh;
         z-index: 999;
         position: absolute;
@@ -75,10 +75,10 @@ opacity: 0;
     width: 55vh;
     height: 100vh;
     position: absolute;
-    background-color: beige;
+    background-color: var(--color-beige);
     right: -100%;
     display: flex;
-    padding: 20px 15px;
+    padding: 20px 30px;
     flex-direction: column;
     align-items: flex-end;
     justify-content: start;
