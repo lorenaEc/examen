@@ -10,7 +10,7 @@
     --color-dark-green: #373D2F;
     --color-green: #7C846D;
     --color-dark-beige: #C9BDAB;
-    --color-beige: #EEEBE4;
+    --color-beige: #F5F5F5;
 
     //Fonts
     --font-primary: 'Inter';
@@ -21,12 +21,14 @@
 	--size-h2: 50px;
 	--size-h3: 30px;
 	--size-h4: 25px;
+	--size-h5: 20px;
     --size-p: 18px;
 
     --size-mobile-h1: 32px;
 	--size-mobile-h2: 28px;
 	--size-mobile-h3: 24px;
 	--size-mobile-h4: 16.5px;
+	--size-mobile-h5: 15px;
     --size-mobile-p: 14.25px;
 
     // Font weight
@@ -55,6 +57,11 @@
 	margin: auto;
 	padding-left: var(--padding-side);
 	padding-right: var(--padding-side);
+
+	.mobile & {
+		padding-left: var(--padding-side-mobile);
+		padding-right: var(--padding-side-mobile);
+	}
 
 	&.small {
 		max-width: calc(var(--contained-width-small) + var(--padding-side) * 2);
@@ -113,6 +120,18 @@ h4,
 
 	.mobile & {
 		font-size: var(--size-mobile-h4);
+	}
+}
+
+h5,
+.h5 {
+	font-size: var(--size-h5);
+	font-family: var(--font-primary);
+
+	font-weight: var(--font-weight);
+
+	.mobile & {
+		font-size: var(--size-mobile-h5);
 	}
 }
 p,
