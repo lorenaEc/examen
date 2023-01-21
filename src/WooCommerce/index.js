@@ -39,4 +39,11 @@ export default class Woocommerce {
         return dataJson     
     }
 
+    static async getProductsById(id) {
+        const data = await fetch(`${url}/wp-json/wc/v3/products/${id}?consumer_key=${key}&consumer_secret=${secret}`)
+        const dataJson = await data.json()
+
+        return dataJson     
+    }
+
 }

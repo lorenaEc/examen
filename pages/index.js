@@ -1,41 +1,32 @@
-import { useEffect, useState } from "react"
 import { useDevices } from "../src/utils/LayoutHandler"
 import Wordpress from "../src/utils/Wordpress"
 import Woocommerce from "../src/WooCommerce"
+import BlockRenderer from "../src/BlockRenderer/blockrenderer"
 
 
 
-export default function Home(props) {
+export default function Home({page}) {
   const [mobile, tablet, desktop] = useDevices()
-  // console.log([mobile, tablet, desktop])
-  console.log(props)
+  console.log(page)
 
-  // useEffect(() => {
-    // const getCategories  = async () => {
-    //   const categories = await Woocommerce.getCategories()
-    //   const ca = categories.json()
-    //   console.log(ca)
-    // }
-    // getCategories()
-  // }, [])
  
   
 
   return (
-    <div>
-      <div className="h1">Hej</div>
-    </div>
+        <>
+            <BlockRenderer blocks={page?.acf?.block} />
+        </> 
+   
   )
 }
 
 export async function getServerSideProps(context) {
   
-  const products = await Woocommerce.getProductBySlug('golvlampa-neteyam')
-  console.log(products)
+  const page = await Wordpress.getHomePage()
 
   return {
     props: {
-      products
+      page
     }
   }
 }
