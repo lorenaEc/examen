@@ -18,15 +18,14 @@ return (
             <div className="infoContainer">
                 <h3>Information</h3>
                 <Link href={"/om-oss"}><span className="p">Om oss</span></Link>
+                <Link href={"/login"}><span className="p">Logga in</span></Link>       
                 <Link href={"/kontakt"}><span className="p">Kontakta oss</span></Link>
-                <Link href={"/login"}><span className="p">Logga in</span></Link>
-
             </div>
 
             
 
             <div className="socialContainer">
-            <Link className="h2" href={'/'}><img src="/icons/footer.svg"/></Link>
+            <Link href={'/'}><img className="logo" src="/icons/footer.svg"/></Link>
 
             <div className="icons">
                 <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -58,11 +57,9 @@ const Style = styled.footer`
    }
 
    .contained{
-
+    justify-content: space-between;
         display: flex;
         padding-top: 40px;
-        justify-content: space-between;
-        /* gap:100px; */
         flex-wrap: wrap;
 
         .mobile & {
@@ -74,7 +71,7 @@ const Style = styled.footer`
             display:flex;
             flex-direction: column;
             gap: 25px;
-            width: 35%;
+            width: 30%;
 
         .p{
             color:var(--color-white); 
@@ -84,12 +81,24 @@ const Style = styled.footer`
 
         .infoContainer{
             display:flex;
+            justify-content: flex-end;
             flex-direction: column;
             gap: 25px;
             width: 35%;
 
+            .mobile & {
+                h3 {
+                text-align: end;  
+            }
+
+            a {
+                text-align: end;
+            } 
+            }
+
             .p{
                 color:var(--color-white); 
+                text-align: end;
             }
 
         }
@@ -103,14 +112,16 @@ const Style = styled.footer`
                 width: 100%;
                 display: flex;
                 flex-direction: row;
-                justify-content:space-around;
-                margin: 30px 0;
+                margin: 30px 40px;
+                justify-content: space-between;
             }
             
-            .h2{
-            color: var(--color-white);
-            text-decoration: none;
-
+            .logo{
+                .mobile & {
+                width: 60px;
+                height: 60px;
+                
+            }
 
             } 
 
@@ -118,12 +129,13 @@ const Style = styled.footer`
                 padding-top: 40px;
                 display: flex;
                 justify-content:space-between;
+                gap:10px;
 
                 .mobile & {
-                padding-top: 0;
+                padding-top: 15px;
                 width: 80px;
                 height: 80px;
-                gap:10px;
+                gap:5px;
             }
 
             }
