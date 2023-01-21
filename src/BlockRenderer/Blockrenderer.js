@@ -4,6 +4,7 @@ import TextBlockWordpress from "../blocks/TextBlock/TextBlock.Wordpress"
 import SplitWordpress from "../blocks/SplitBlock/Split.Wordpress"
 import CollectionWordpress from "../blocks/Collection/Collection.Wordpress"
 import ProductWordpress from "../blocks/Product/Product.Wordpress"
+import ContactWordpress from "../blocks/ContactBlock/Contact.Wordpress"
 
 export default function BlockRenderer({blocks}) {
     if(!blocks) return <></>
@@ -18,7 +19,10 @@ export default function BlockRenderer({blocks}) {
             case 'collection':
                 return <CollectionWordpress key={index} data={block} /> 
                 case 'product':
-                    return <ProductWordpress key={index} data={block} />    
+                    return <ProductWordpress key={index} data={block} />  
+                case 'contact':
+                    return <ContactWordpress key={index} data={block} />    
+                          
                         
             
         }

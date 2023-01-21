@@ -1,49 +1,67 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, useContext} from "react";
 import Woocommerce from "../../WooCommerce";
 import { useRouter } from 'next/router'
+import { CartContext } from "../../Context/cartContext";
 import styled from "styled-components";
+import Cart from "../../Functions/cart";
 import Link from "next/link";
 
-function Product({ backgroundColor}) {
+function Product({ backgroundColor, title, textColor, product}) {
+    const {cart, setcart} = useContext(CartContext)
     const router = useRouter()
-    const [products, setProducts] = useState()
+    const [products, setProducts] = useState([])
 
   //Get all products from woocommerce categories
     useEffect(() => {
         async function getAllProducts() {
             const category = await Woocommerce.getCategoryBySlug(router.query.category)
-            console.log('categoryy',category)
             
             const productsByC = await Woocommerce.getProductsByCategory(category[0].id)
-            console.log(productsByC)
             setProducts(productsByC)
         }
-        getAllProducts()
+        if(router.query.category !== undefined) {
+            getAllProducts()
+        }
+        async function getRelatedProducts() {
+            let relatedProducts = []
+            for(const relatedId of product.related_ids) {
+                const relatedProduct = await Woocommerce.getProductsById(relatedId)
+                relatedProducts.push(relatedProduct)
+            }
+            setProducts(relatedProducts)
+        }
+        if(router.query.product_slug !== undefined) {
+            getRelatedProducts()
+        }
         
-    },[])
+    },[router.query.category, router.query.product_slug ])
 
 
 
     return (
-        <Style style={{ '--backgroundColor': backgroundColor }}>
+        <Style style={{ '--backgroundColor': backgroundColor, 'textColor': textColor }}>
             <div className="contained">
+            {title && <div className='h3'> {title}</div>}
                 <div className="containerBox">
+                   
                     {products && products.map((product, index) => (
-                        <Link  className='wrapper' href={`/product/${product.slug}`} key={index}>
+                        <div  className='wrapper' key={index}>
+
                             <div className="overlay"></div>
-                            {product.images && <div className='imageBox'><img src={product.images[0].src} /></div>}
+
+                            {product.images && <Link  href={`/product/${product.slug}`} className='imageBox'><img src={product.images[0].src} /></Link>}
                             <div className="infoWrapper">
                                 <div className="info">
-                                <p>{product.name}</p>
+                                <Link href={`/product/${product.slug}`} ><p>{product.name}</p></Link>
                                 <p>{product.price} Kr</p>
                                 </div>
                                 <div className="button">
-                                <p>Add to cart</p>
+                                <p onClick={() => Cart.addToCart(cart, setcart, 1, product)}>Add to cart</p>
                                 </div>
                             </div>
                             
 
-                        </Link>
+                        </div>
                     ))}
 
                 </div>
@@ -57,11 +75,17 @@ export default Product;
 
 const Style = styled.section`
 background-color: var(--backgroundColor);
-
+color: var(--textColor);
+padding: 100px 0;
 
 .contained{
+
+    .h3 {
+        text-align: center;
+        color: var(--color-dark-green);
+    }
     .containerBox{
-        padding: 75px 0;
+        padding-top: 75px;
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         row-gap: 50px;
@@ -87,9 +111,16 @@ background-color: var(--backgroundColor);
         max-width: 400px;
         border-radius: 10px;
         position: relative;
+        overflow: hidden;
+
+        &:hover > .imageBox  {
+            transform: scale(1.05);
+            transition: ease .3s;
+        }
 
         a{
             text-decoration: none;
+            color: var(--color-dark-green);
         }
 
         .overlay{
@@ -107,9 +138,8 @@ background-color: var(--backgroundColor);
             display: flex;
             justify-content: center;
             height: 60%;
-            position: absolute;
-            
-            
+            position: absolute;   
+            transition: ease .3s;  
 
             .img{
                 width: 100%;
@@ -140,6 +170,7 @@ background-color: var(--backgroundColor);
                 border-radius: 20px;
                 max-width: 160px;
                 height: 40px;
+                cursor: pointer;
 
                 p{
                     display: flex;

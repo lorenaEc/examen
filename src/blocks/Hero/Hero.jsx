@@ -28,34 +28,25 @@ export default Hero;
 
 const Style = styled.section`
 color: var(--color-white);
-height: 100vh;
+height: 75vh;
 background: linear-gradient(0deg, rgba(0,0,0,0.6923144257703081) 0%, rgba(0,212,255,0) 100%);
 background-size: cover;
-background-position: center;
-
-/* .mobile & {
-    
-    height: 70vh;
-} */
+background-position: top;
 
 
     .overlay {
         background: linear-gradient(0deg, rgba(0,0,0,0.6923144257703081) 0%, rgba(0,212,255,0) 100%);
-        height: 100vh;
+        height: 75vh;
         width: 100%;
         z-index: 2;
         position: absolute;
     }
 
     .contained {
-        height: 100%;
+        height: 75%;
         width: 100%;
         z-index: 3;
         position: absolute;
-
-        /* .mobile & {
-            display: none;
-        } */
 
         .containerCenter {
             z-index: 3;
@@ -67,6 +58,11 @@ background-position: center;
             align-items: center;
 
             h1 {
+                text-align: center;
+            }
+
+            div {
+                margin-top: 10px;
                 text-align: center;
             }
         }

@@ -86,7 +86,7 @@ h2{
 
   
     .collection{
-        margin-top:50px ;
+        margin-top:60px ;
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         row-gap: 50px;
@@ -103,8 +103,14 @@ h2{
           max-height: 430px;
           display: flex;
           justify-content: center;
-          box-shadow: 5px 5px 18px #888888;
+          box-shadow: rgba(0, 0, 0, 0.4) 0px 4px 6px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
           border-radius: 5px;
+          transition: ease .3s;
+
+          &:hover {
+            box-shadow: 5px 5px 18px #888888;
+            
+          }
 
           .mobile &, .tablet &{
             width: 300px;

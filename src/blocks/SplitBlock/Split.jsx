@@ -23,7 +23,7 @@ const Split = ({ image, link, buttonTitle, title, description, layout }) => {
               
                     <h2>{title} </h2> 
                     <div className='box' dangerouslySetInnerHTML={{ __html: description }} />
-                    <Link className='link' href={link}>{buttonTitle}</Link>
+                 {link && buttonTitle &&  <Link className='link' href={link}>{buttonTitle}</Link>} 
 
                     </div>
                 </div>
@@ -40,7 +40,7 @@ const Style = styled.section`
 color: var(--color-dark-green);
 
 .desktop & {
-max-height: 80vh;
+/* max-height: 80vh; */
 }
 
 &.split{
@@ -63,7 +63,7 @@ max-height: 80vh;
 
         .mobile &, .tablet &{
              width:100%;
-             height: 70vh;
+             height: 60vh;
     }
 
         .image {
@@ -80,7 +80,7 @@ max-height: 80vh;
 
         .mobile &, .tablet &{
              width:100%;
-             height: 70vh;
+             height: 50vh;
 
     }
 
@@ -95,7 +95,7 @@ max-height: 80vh;
             justify-content: center;
 
             .box {
-                max-width: 300px;
+                max-width: 280px;
             }
 
             .link{
