@@ -7,7 +7,6 @@ import Cart from '../Functions/cart'
 //Mobile popup cart
 function CartPopup({ active, setToggleCart }) {
     const { cart, setcart } = useContext(CartContext)
-    console.log(cart)
 
     //Closing cart
     const close = () => {
@@ -22,8 +21,8 @@ function CartPopup({ active, setToggleCart }) {
             newCart.push(product)
         }
      }
-     setcart(delet)
-     Cart.cartUpdate(delet)
+     setcart(newCart)
+     Cart.cartUpdate(newCart)
     }
 
         const inc = (id) => {
@@ -39,7 +38,7 @@ function CartPopup({ active, setToggleCart }) {
 
        const dec = (id) => {
         const qtyUpdate = cart.map((product) => {
-             if(id === product.id) {
+             if(id === product.id && product.quantity > 1) {
                 product.quantity -= 1
              }
              return product
@@ -58,7 +57,6 @@ function CartPopup({ active, setToggleCart }) {
         <Styled active={active}>
             <div className='overlay'></div>
             <div className='cartContainer'>
-                {cart.length < 1 && <div>Varukorgen är tom</div> }
                 <div className='cartHeader'>
                     <h3>Din varukorg</h3>
                     <div onClick={close}><svg width="25" height="20" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -68,6 +66,7 @@ function CartPopup({ active, setToggleCart }) {
                     </div>
                 </div>
                 <div className='productWrapper'>
+                {cart.length < 1 && <h3 className='empty'>Varukorgen är tom</h3> }
                     {cart && cart.map((product, index) => {
                    
                         return (
@@ -95,7 +94,7 @@ function CartPopup({ active, setToggleCart }) {
                             </div>
                         )
                     })}
-
+{cart.length > 0 &&
                     <div className='totalBox'>
                         <div className='total'>
                             <h5> Total</h5>
@@ -105,13 +104,14 @@ function CartPopup({ active, setToggleCart }) {
                         <Link className='button' href={'/checkout'}> Till kassan</Link>
 
                     </div>
+}
                 </div>
             </div>
         </Styled>
     )
 }
 const Styled = styled.div`
-width: 100vw;
+width: 100%;
 position: fixed;
 transition: ease .4s;
 top: 0;
@@ -134,7 +134,7 @@ opacity: 0;
     .overlay {
         background-color: black;
         opacity: .6;
-        width: 100vw;
+        width: 100%;
         height: 100vh;
         z-index: 999;
         position: absolute;
@@ -143,7 +143,7 @@ opacity: 0;
     height: 100vh;
     width: 500px;
     position: absolute;
-    background-color: beige;
+    background-color: var(--color-beige);
     right: -100%;
     display: flex;
     flex-direction: column;
@@ -165,7 +165,7 @@ opacity: 0;
     }}
 
     .mobile & {
-        width: 100vw;
+        width: 100%;
     }
 
     .cartHeader{
@@ -183,6 +183,13 @@ opacity: 0;
         width:100%;
         overflow-y: auto;
         overflow-x: hidden;
+
+        .empty{
+            display:flex;
+            justify-content:center;
+            margin:40px 0;
+            color:var(--color-dark-green);
+        }
         .productContainer{
             margin:15px 0;
             background-color:var(--color-white);
