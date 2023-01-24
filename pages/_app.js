@@ -46,7 +46,7 @@ function MyApp({ Component, pageProps }) {
     
   }, [])
 
-  // if(loading) return <div style={{'width': '100vw', 'height': '100vh', 'backgroundColor': 'white', 'color': '#373D2F', 'display': 'flex', 'justifyContent': 'center', 'alignItems': 'center', 'fontSize': '25px'}}>Loading...</div>
+  if(loading) return <div style={{'width': '100vw', 'height': '100vh', 'backgroundColor': 'white', 'color': '#373D2F', 'display': 'flex', 'justifyContent': 'center', 'alignItems': 'center', 'fontSize': '25px'}}>Loading...</div>
 
   return(
     <CartContext.Provider value={cartValue}>
