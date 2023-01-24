@@ -40,7 +40,7 @@ export default class Cart{
       }
     
      static incrementQty(qty, setQty) {
-        setQty(qty + 1)
+        setQty(qty +1)
 
       }
     

@@ -39,6 +39,23 @@ export default function Menu() {
         items += product.quantity
     }
 
+     const createCheckOutSession = async () => {
+        const publishableKey = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY;
+        const stripePromise = loadStripe(publishableKey);
+        const stripe = await stripePromise;
+        const checkoutSession = await axios.post("/api/createStripeSession", {
+            items: cart,
+            email: 'test@gmail.com'
+        })
+       
+        const result = await stripe.redirectToCheckout({
+          sessionId: checkoutSession.data.id,
+        });
+        if (result.error) {
+          alert(result.error.message);
+        }
+      };
+
     return (
         <>
             <Styled>

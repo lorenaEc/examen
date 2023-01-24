@@ -123,6 +123,7 @@ function CartPopup({ active, setToggleCart }) {
     )
 }
 const Styled = styled.div`
+padding-bottom: 30px;
 width: 100%;
 position: fixed;
 transition: ease .4s;
@@ -273,6 +274,7 @@ opacity: 0;
             width: 100%;
             padding: 0 30px;
             border-top: 1px solid var(--color-dark-green);
+            margin-bottom:30px;
 
             .total{
                 margin:20px 0;
