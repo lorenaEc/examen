@@ -5,6 +5,7 @@ import { useContext, useState } from "react";
 import { CartContext } from "../../src/Context/cartContext";
 import Cart from "../../src/Functions/cart";
 import Product from "../../src/blocks/Product/Product";
+import Image from "next/image";
 
 
 export default function SingleProduct({ product }) {
@@ -39,7 +40,7 @@ const formatPrice = formatter.format(product.price)
       <div className="container">
         <div className="contained small">
           <div className="imgBox">
-            <img src={product.images[0].src} />
+            <Image width={500} height={500} alt="image" src={product.images[0].src} />
           </div>
 
           <div className="infoBox">
@@ -80,7 +81,7 @@ const formatPrice = formatter.format(product.price)
             <div className="checkBoxes">
               {data && data.map((c, index) => (
                 <div className="checkBox" key={index}>
-                  <img src={c.icon} />
+                  <Image className="icon" width={500} height={500} alt="image" src={c.icon} />
                   <p className="p">{c.title}</p>
                 </div>
               ))}
@@ -134,7 +135,7 @@ padding-top: 200px;
 
       .mobile &{
         width: 100%;
-        height: 330px;
+        height: 400px;
       }
 
       img{
@@ -145,6 +146,7 @@ padding-top: 200px;
         .mobile &{
         width: 100%;
         height: 100%;
+        object-fit: contain;
       }
 
       }
@@ -305,6 +307,11 @@ padding-top: 200px;
           align-items: center;
           margin: 15px;
           gap: 15px;
+
+          .icon{
+            width: 20px;
+            height: 20px;
+          }
 
           .mobile & {
             width: 200px;

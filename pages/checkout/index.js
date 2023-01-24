@@ -56,7 +56,7 @@ function Checkout() {
                   return (
                       <div className='productContainer' key={index}>
                           <div className='firstContainer'>
-                              <div className='imgBox'><Image className='img' alt='image' src={product.img} /></div>
+                              <div className='imgBox'><Image className='img' width={500} height={500} alt='image' src={product.img} /></div>
                               <div className='infoBox'>
                                   <h5>{product.title}</h5>
                                   <b>{priceSingle}</b>
