@@ -1,29 +1,33 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inria+Serif&display=swap");
 :root {
   --color-white: #ffffff;
   --color-black: #000000;
   --color-dark-green: #373D2F;
   --color-green: #7C846D;
   --color-dark-beige: #C9BDAB;
-  --color-beige: #EEEBE4;
+  --color-beige: #F5F5F5;
   --font-primary: 'Inter';
-  --size-h1: 52px;
-  --size-h2: 40.5px;
-  --size-h3: 28.5px;
-  --size-h4: 21px;
-  --size-p: 15px;
+  --font-secundary: 'Inria-Serif';
+  --size-h1: 60px;
+  --size-h2: 50px;
+  --size-h3: 30px;
+  --size-h4: 25px;
+  --size-h5: 20px;
+  --size-p: 18px;
   --size-mobile-h1: 32px;
   --size-mobile-h2: 28px;
   --size-mobile-h3: 24px;
   --size-mobile-h4: 16.5px;
+  --size-mobile-h5: 15px;
   --size-mobile-p: 14.25px;
   --font-weight: 400;
   --font-weight-bold: 700;
   --padding-side: 4rem;
   --padding-side-tablet: 2rem;
   --padding-side-mobile: 1rem;
-  --contained-width-standard: 1400px;
-  --contained-width-small: 1000px;
+  --contained-width-standard: 1600px;
+  --contained-width-small: 1200px;
   --contained-width-extra-small: 850px;
 }
 
@@ -39,6 +43,11 @@
   margin: auto;
   padding-left: var(--padding-side);
   padding-right: var(--padding-side);
+}
+
+.mobile .contained {
+  padding-left: var(--padding-side-mobile);
+  padding-right: var(--padding-side-mobile);
 }
 
 .contained.small {
@@ -98,13 +107,27 @@ h4,
   font-size: var(--size-mobile-h4);
 }
 
+h5,
+.h5 {
+  font-size: var(--size-h5);
+  font-family: var(--font-primary);
+  font-weight: var(--font-weight);
+}
+
+.mobile h5, .mobile
+.h5 {
+  font-size: var(--size-mobile-h5);
+}
+
+p,
 .p {
   font-size: var(--size-p);
   font-family: var(--font-primary);
   font-weight: var(--font-weight);
 }
 
-.mobile .p {
+.mobile p, .mobile
+.p {
   font-size: var(--size-mobile-p);
 }
 
@@ -117,5 +140,15 @@ h4,
 .mobile .p-bold {
   font-size: var(--size-mobile-p);
   font-weight: var(--font-weight-bold);
+}
+
+.nav {
+  font-size: var(--size-h3);
+  font-family: var(--font-secundary);
+  font-weight: var(--font-weight);
+}
+
+.mobile .nav {
+  font-size: var(--size-mobile-p);
 }
 /*# sourceMappingURL=style.css.map */
