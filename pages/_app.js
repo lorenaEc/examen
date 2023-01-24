@@ -7,7 +7,6 @@ import {  useState, useMemo, useEffect } from 'react'
 import { CartContext } from '../src/Context/cartContext'
 import { useRouter } from 'next/router'
 import Router from 'next/router'
-// import LottieAnimation from '../src/Lottie/Animation'
 
 
 function MyApp({ Component, pageProps }) {
@@ -46,8 +45,8 @@ function MyApp({ Component, pageProps }) {
     };
    
   }, [])
-  // if (loading) return  <LottieAnimation />
 
+  if(loading) return <div style={{'width': '100vw', 'height': '100vh', 'backgroundColor': 'white', 'color': '#373D2F', 'display': 'flex', 'justifyContent': 'center', 'alignItems': 'center', 'fontSize': '25px'}}>Loading...</div>
 
   return(
     <CartContext.Provider value={cartValue}>
