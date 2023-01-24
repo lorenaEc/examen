@@ -37,13 +37,13 @@ function MyApp({ Component, pageProps }) {
 
     Router.events.on('routeChangeStart', handleStart);
     Router.events.on('routeChangeComplete', handleComplete);
-
+    setIsLoading(false)
     return () => {
-      setIsLoading(false)
+      
       Router.events.off('routeChangeStart', handleStart);
       Router.events.off('routeChangeComplete', handleComplete);
     };
-   
+    
   }, [])
 
   // if(loading) return <div style={{'width': '100vw', 'height': '100vh', 'backgroundColor': 'white', 'color': '#373D2F', 'display': 'flex', 'justifyContent': 'center', 'alignItems': 'center', 'fontSize': '25px'}}>Loading...</div>
