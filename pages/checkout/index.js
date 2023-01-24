@@ -3,17 +3,14 @@ import { useContext } from "react";
 import { CartContext } from "../../src/Context/cartContext";
 import { loadStripe } from "@stripe/stripe-js";
 import axios from "axios";
-import Link from "next/link";
 import styled from "styled-components";
-
-
-
 import React from 'react'
 
 function Checkout() {
 
     const { cart, setcart } = useContext(CartContext)
 
+    //POST stripe api
     const createCheckOutSession = async () => {
         const publishableKey = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY;
         const stripePromise = loadStripe(publishableKey);
@@ -119,7 +116,7 @@ margin-top: 200px;
                 justify-content: space-around;
 
                 .imgBox{
-                    width:180px;
+                    width:250px;
 
                     img{
                         width: 100%;
