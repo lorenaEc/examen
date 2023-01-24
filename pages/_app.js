@@ -7,7 +7,7 @@ import {  useState, useMemo, useEffect } from 'react'
 import { CartContext } from '../src/Context/cartContext'
 import { useRouter } from 'next/router'
 import Router from 'next/router'
-import LottieAnimation from '../src/Lottie/Animation'
+// import LottieAnimation from '../src/Lottie/Animation'
 
 
 function MyApp({ Component, pageProps }) {
@@ -46,7 +46,7 @@ function MyApp({ Component, pageProps }) {
     };
    
   }, [])
-  if (loading) return  <LottieAnimation />
+  // if (loading) return  <LottieAnimation />
 
 
   return(
