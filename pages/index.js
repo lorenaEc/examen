@@ -7,10 +7,6 @@ import BlockRenderer from "../src/BlockRenderer/blockrenderer"
 
 export default function Home({page}) {
   const [mobile, tablet, desktop] = useDevices()
-  console.log(page)
-
- 
-  
 
   return (
         <>

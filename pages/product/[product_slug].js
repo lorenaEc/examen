@@ -10,7 +10,6 @@ import Product from "../../src/blocks/Product/Product";
 export default function SingleProduct({ product }) {
   const { cart, setcart } = useContext(CartContext)
   const [qty, setQty] = useState(1)
-  console.log(product)
 
   const data = [
     {
@@ -27,6 +26,14 @@ export default function SingleProduct({ product }) {
     }
 ]
 
+const formatter = new Intl.NumberFormat('se-SE', {
+  style: 'currency',
+  currency: 'SEK',
+
+});
+
+const formatPrice = formatter.format(product.price)
+
   return (
     <Style >
       <div className="container">
@@ -37,7 +44,7 @@ export default function SingleProduct({ product }) {
 
           <div className="infoBox">
             <h2>{product.name}</h2>
-            <h5 className="h4">{product.price} Kr</h5>
+            <h5 className="h4">{formatPrice} </h5>
             <div className="description" dangerouslySetInnerHTML={{ __html: product.short_description }}></div>
 
             <div className="qtyBox">
@@ -57,12 +64,14 @@ export default function SingleProduct({ product }) {
           <div className="contained small blockInfo">
             <div className="wrapper">
               <div className="pInfo">
-                <div className="h5">Produktinformation</div>
+                <div className="h4">Produktinformation</div>
                 <div className="des" dangerouslySetInnerHTML={{ __html: product.description }}></div>
               </div>
               <div className='sInfo'>
-                <p className="h5">Specifikation</p>
-                <p>Bredd: {product.dimensions.width}</p>
+                <b className="h4">Specifikation</b>
+                <p>Höjd: {product.dimensions.height} cm</p>
+                <p>Bredd: {product.dimensions.width} cm</p>              
+                <p>Längd: {product.dimensions.length} cm</p>
               </div>
 
             </div>
@@ -77,14 +86,8 @@ export default function SingleProduct({ product }) {
               ))}
 
             </div>
-
-
-
           </div>
-
         </div>
-
-
       </div>
       
       <Product product={product} backgroundColor={'var(--color-dark-beige)'} title={'Vi rekommenderar'}/>
@@ -108,6 +111,10 @@ export async function getServerSideProps(context) {
 const Style = styled.div`
 padding-top: 200px;
 
+.mobile &{
+  padding-top: 150px;
+}
+
 .container{
 
   .contained.small {
@@ -124,11 +131,10 @@ padding-top: 200px;
       height: 500px;
       display: flex;
       justify-content: center;
-      border: 1px solid ;
 
       .mobile &{
         width: 100%;
-        height: 450px;
+        height: 330px;
       }
 
       img{
@@ -175,8 +181,10 @@ padding-top: 200px;
         justify-content: space-between;
 
         .mobile & {
-          justify-content: start;
-          max-width: 400px;
+          display: flex;
+          margin-top: 5px;
+          flex-direction: column;
+          align-items: center;
         }
 
 
@@ -231,6 +239,7 @@ padding-top: 200px;
 
           .mobile & {
             padding: 5px 10px;
+            width: 100%;
           }
 
 
@@ -257,6 +266,7 @@ padding-top: 200px;
 
         .mobile &{
           padding: 0px 50px;
+          text-align: center;
         }
         
       .pInfo{
@@ -285,7 +295,9 @@ padding-top: 200px;
 
         .mobile & {
           margin-top: 50px;
-          padding: 30p
+          display: flex;
+          flex-direction: column;
+          align-items: center;
         }
 
         .checkBox{
@@ -293,6 +305,11 @@ padding-top: 200px;
           align-items: center;
           margin: 15px;
           gap: 15px;
+
+          .mobile & {
+            width: 200px;
+
+          }
         }
       }
     }
