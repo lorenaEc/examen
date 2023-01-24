@@ -5,6 +5,7 @@ import SplitWordpress from "../blocks/SplitBlock/Split.Wordpress"
 import CollectionWordpress from "../blocks/Collection/Collection.Wordpress"
 import ProductWordpress from "../blocks/Product/Product.Wordpress"
 import ContactWordpress from "../blocks/ContactBlock/Contact.Wordpress"
+import FullImageWordpress from "../blocks/FullImageBlock/FullImage.Wordpress"
 
 export default function BlockRenderer({blocks}) {
     if(!blocks) return <></>
@@ -22,7 +23,9 @@ export default function BlockRenderer({blocks}) {
                     return <ProductWordpress key={index} data={block} />  
                 case 'contact':
                     return <ContactWordpress key={index} data={block} />    
-                          
+                case 'fullImage':
+                    return <FullImageWordpress key={index} data={block} />    
+                              
                         
             
         }
