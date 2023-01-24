@@ -6,14 +6,19 @@ import '../styles/style.scss'
 import {  useState, useMemo, useEffect } from 'react'
 import { CartContext } from '../src/Context/cartContext'
 import { useRouter } from 'next/router'
+import Router from 'next/router'
+import LottieAnimation from '../src/Lottie/Animation'
+
 
 function MyApp({ Component, pageProps }) {
   LayoutHandler.listen()
   const [cart, setcart] = useState([])
   const cartValue = useMemo(() => ({cart, setcart}), [cart, setcart])
   const router = useRouter();
-  const [loading, setLoading] = useState(false);
+  const [loading, setIsLoading] = useState(true);
 
+
+  //Get cart from LocalStorage
   useEffect(() =>{
     let storage = localStorage.getItem("cart")
     const localCart = JSON.parse(storage)
@@ -22,23 +27,28 @@ function MyApp({ Component, pageProps }) {
     
   },[])
 
-  
+  //Loading animation
   useEffect(() => {
-    const handleStart = (url) => (url !== router.asPath) && setLoading(true);
-    const handleComplete = (url) => (url === router.asPath) && setLoading(false);
-    router.events.on('routeChangeStart', handleStart)
-    router.events.on('routeChangeComplete', handleComplete)
-    router.events.on('routeChangeError', handleComplete)
+    const handleStart = () => {
+      setIsLoading(true);
+    };
+    const handleComplete = () => {
+      setIsLoading(false);
+    };
+
+    Router.events.on('routeChangeStart', handleStart);
+    Router.events.on('routeChangeComplete', handleComplete);
+
     return () => {
-      router.events.off('routeChangeStart', handleStart)
-      router.events.off('routeChangeComplete', handleComplete)
-      router.events.off('routeChangeError', handleComplete)
-    }
-  })
-  // if (loading) return <LottieAnimation />
+      setIsLoading(false)
+      Router.events.off('routeChangeStart', handleStart);
+      Router.events.off('routeChangeComplete', handleComplete);
+    };
+   
+  }, [])
+  if (loading) return  <LottieAnimation />
 
 
-  // if (windowLoaded) return <></>
   return(
     <CartContext.Provider value={cartValue}>
     <Menu/>
