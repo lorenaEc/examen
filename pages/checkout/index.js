@@ -5,6 +5,7 @@ import { loadStripe } from "@stripe/stripe-js";
 import axios from "axios";
 import styled from "styled-components";
 import React from 'react'
+import Image from "next/image";
 
 function Checkout() {
 
@@ -55,7 +56,7 @@ function Checkout() {
                   return (
                       <div className='productContainer' key={index}>
                           <div className='firstContainer'>
-                              <div className='imgBox'><img src={product.img} /></div>
+                              <div className='imgBox'><Image className='img' alt='image' src={product.img} /></div>
                               <div className='infoBox'>
                                   <h5>{product.title}</h5>
                                   <b>{priceSingle}</b>
@@ -118,7 +119,7 @@ margin-top: 200px;
                 .imgBox{
                     width:250px;
 
-                    img{
+                    .img{
                         width: 100%;
                         height: 100%;
                     }
