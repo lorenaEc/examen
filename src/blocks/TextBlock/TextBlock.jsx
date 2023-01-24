@@ -48,6 +48,7 @@ display: flex;
 
     .contained{
     display: flex;
+    align-items: center;
     gap: 20px;
 
     .mobile &, .tablet &{

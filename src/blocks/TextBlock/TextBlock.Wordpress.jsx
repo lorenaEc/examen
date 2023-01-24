@@ -2,7 +2,7 @@ import React from 'react'
 import TextBlock from './TextBlock'
 
 export default function TextBlockWordpress({ data }) {
-    console.log(data)
+    
     return (
         <TextBlock
         title={data.title}

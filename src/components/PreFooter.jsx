@@ -1,5 +1,4 @@
 import React from "react";
-import Link from "next/link";
 import styled from "styled-components";
 
 
@@ -38,10 +37,16 @@ export default function PreFooter() {
     )
 }
 const Style = styled.div`
-height: 250px;
-padding-top: 50px;
+padding: 50px 0px;
 background-color: var(--color-white);
 color:var(--color-dark-green);
+
+
+.mobile & {
+    padding: 50px;
+    background-color: var(--color-beige);
+    border-top: 1px solid var(--color-dark-green);
+}
 
 
 .contained{
@@ -49,9 +54,18 @@ color:var(--color-dark-green);
         padding-top: 50px;
         border-top: 1px solid var(--color-dark-green);
         display: flex;
-        flex-direction: row;
         justify-content: space-between;
         align-items:center;
+
+        .mobile & {
+            padding: 0px ;
+            display: flex;
+            flex-direction: column;
+            margin: 20px 0px;
+            gap: 20px;
+            border-top: none;
+        }
+        
 
         .payContainer{
             display: flex;
@@ -65,6 +79,7 @@ color:var(--color-dark-green);
 
                 .mobile & {
                     max-width: 105px;
+                    
                 }
             }
 

@@ -8,7 +8,7 @@ return (
     <Style>
         <div className='contained'>
             <div className="navContainer">
-                <h3>Navigate</h3>
+                <h3>Navigera</h3>
                 <Link href={"/shop/taklampor"}><span className="p">Taklampor</span></Link>
                 <Link href={"/shop/bordslampor"}><span className="p">Bordslapor</span></Link>
                 <Link href={"/shop/golvlampor"}><span className="p">Golvlampor</span></Link>
@@ -104,7 +104,6 @@ const Style = styled.footer`
         }
 
         .socialContainer{
-
             display: flex;
             flex-direction: column;
 
@@ -118,8 +117,8 @@ const Style = styled.footer`
             
             .logo{
                 .mobile & {
-                width: 60px;
-                height: 60px;
+                width: 50px;
+                height: 50px;
                 
             }
 
@@ -130,6 +129,7 @@ const Style = styled.footer`
                 display: flex;
                 justify-content:space-between;
                 gap:10px;
+                
 
                 .mobile & {
                 padding-top: 15px;

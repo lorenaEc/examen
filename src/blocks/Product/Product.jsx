@@ -36,33 +36,43 @@ function Product({ backgroundColor, title, textColor, product}) {
         
     },[router.query.category, router.query.product_slug ])
 
+    const formatter = new Intl.NumberFormat('se-SE', {
+        style: 'currency',
+        currency: 'SEK',
+      
+      });
+      
+
 
 
     return (
         <Style style={{ '--backgroundColor': backgroundColor, 'textColor': textColor }}>
-            <div className="contained">
-            {title && <div className='h3'> {title}</div>}
-                <div className="containerBox">
-                   
-                    {products && products.map((product, index) => (
-                        <div  className='wrapper' key={index}>
+            <div className="wrapper">
+                {title && <div className='h3'> {title}</div>}
+                <div className="contained small">
 
-                            <div className="overlay"></div>
+                    {products && products.map((product, index) => {
+                        const formatPrice = formatter.format(product.price)
+                        return (
+                            <div className='wrapper' key={index}>
 
-                            {product.images && <Link  href={`/product/${product.slug}`} className='imageBox'><img src={product.images[0].src} /></Link>}
-                            <div className="infoWrapper">
-                                <div className="info">
-                                <Link href={`/product/${product.slug}`} ><p>{product.name}</p></Link>
-                                <p>{product.price} Kr</p>
+                                <div className="overlay"></div>
+
+                                {product.images && <Link href={`/product/${product.slug}`} className='imageBox'><img src={product.images[0].src} /></Link>}
+                                <div className="infoWrapper">
+                                    <div className="info">
+                                        <Link href={`/product/${product.slug}`} ><p>{product.name}</p></Link>
+                                        <p>{formatPrice}</p>
+                                    </div>
+                                    <div className="button">
+                                        <p onClick={() => Cart.addToCart(cart, setcart, 1, product)}>Add to cart</p>
+                                    </div>
                                 </div>
-                                <div className="button">
-                                <p onClick={() => Cart.addToCart(cart, setcart, 1, product)}>Add to cart</p>
-                                </div>
+
+
                             </div>
-                            
-
-                        </div>
-                    ))}
+                        )
+                    })}
 
                 </div>
             </div>
@@ -78,13 +88,19 @@ background-color: var(--backgroundColor);
 color: var(--textColor);
 padding: 100px 0;
 
-.contained{
+.mobile & {
+    padding: 75px 0;
+}
+
+
+.wrapper{
 
     .h3 {
         text-align: center;
         color: var(--color-dark-green);
     }
-    .containerBox{
+
+    .contained{
         padding-top: 75px;
         display: grid;
         grid-template-columns: repeat(3, 1fr);
@@ -99,6 +115,7 @@ padding: 100px 0;
 
         .mobile & {
             margin: 0;
+            padding-top:30px ;
             grid-template-columns: repeat(1, 1fr); 
             width: 100%;
         }

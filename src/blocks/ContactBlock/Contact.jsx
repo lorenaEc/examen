@@ -9,17 +9,17 @@ function Contact({backgroundColor, title, textColor}){
         {
             label: "Instagram",
             icon: '/icons/instagram.svg',
-            link: ''
+            link: 'https://www.instagram.com/'
         },
         {
             label: "Mail",
             icon: '/icons/Message.svg',
-            link: ''
+            link: 'mailto:lorena.echeverry@hotmail.com'
         },
         {
             label: "Ring",
             icon: '/icons/Phone.svg',
-            link:''
+            link:'tel:0735173059'
         }
     ]
 
@@ -30,10 +30,10 @@ function Contact({backgroundColor, title, textColor}){
                     <div className="h3">{title}</div>
                     <div className="boxes">
                         {data && data.map((b, index) => (
-                            <div className="box" key={index}>{b.link}
+                            <Link href={b.link} className="box" key={index}>
                                 <img className="icon" src={b.icon} />
                                 <p>{b.label}</p>
-                            </div>
+                            </Link>
                         ))}
                     </div>
 
@@ -54,6 +54,14 @@ padding: 100px 0px;
 background-color: var(--backgroundColor);
 color: var(--textColor);
 
+    a{
+        text-decoration:none;
+    }
+
+    .mobile &{
+        padding: 75px 0px;
+    }
+
 .contained{
     .wrapper{
         .h3{
@@ -70,15 +78,16 @@ color: var(--textColor);
             padding-top:75px;
             display: flex;
             justify-content: center;
-
+  
             .mobile &{
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            padding-top:30px;
             gap: 30px;
-          
-            }
+           
+            } 
 
             .box{
                 display: flex;
@@ -91,22 +100,23 @@ color: var(--textColor);
                 margin: 0px 15px;
                 border-radius: 10px;
                 background-color: var(--color-white);
+
+                :hover {
+                    border: #7C846D solid 1px;
+                }
           
             }
-
-                img{
                     .icon{
-                    width: 60px;
-                    height: 60px;
+                    width: 40px;
+                    height: 40px;
                     color: var(--color-dark-green);
                     fill: var(--color-dark-green)!important;
                     }
-                
-                }
 
                 p{
                     margin-top: 15px;
                     color: var(--color-dark-green);
+                    
                 }
         }
     }

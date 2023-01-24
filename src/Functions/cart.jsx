@@ -35,7 +35,6 @@ export default class Cart{
            }]));
         } else {
             localStorage.setItem("cart", JSON.stringify(cart));
-            console.log('exsisting!')
         }
        
       }

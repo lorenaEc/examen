@@ -60,10 +60,11 @@ color: var(--color-dark-green);
     
     .left{
         width: 50%;
+        height: 75vh;
 
         .mobile &, .tablet &{
              width:100%;
-             height: 60vh;
+             height: 70vh;
     }
 
         .image {

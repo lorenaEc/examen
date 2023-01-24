@@ -73,15 +73,28 @@ padding:100px 0;
 background-color: var(--backgroundColor);
 color: var(--textColor);
 
+
+.mobile & {
+    padding-top: 75px;
+}
+
 h2{
         text-align: center;
     }
 .contained, .mobileContainer{
+    overflow: auto;
 
     .collection.filtered{
-        display:flex;
-        justify-content: center;
-        
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        justify-items: center;
+        max-width: 50%;
+        margin: 60px auto;
+
+        .mobile & {
+            max-width: 100%;
+            margin: 40px 0px;
+        }
     }
 
   
