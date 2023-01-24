@@ -10,7 +10,7 @@
     --color-dark-green: #373D2F;
     --color-green: #7C846D;
     --color-dark-beige: #C9BDAB;
-    --color-beige: #F5F5F5;
+    --color-beige: #EDEBE4;
 
     //Fonts
     --font-primary: 'Inter';
@@ -33,6 +33,7 @@
 
     // Font weight
 	--font-weight: 400;
+	--font-weight-nav: 530;
 	--font-weight-bold: 700;
 
     // Container settings
@@ -54,7 +55,7 @@
 
 .contained {
 	max-width: calc(var(--contained-width-standard) + var(--padding-side) * 2);
-	margin: auto;
+	margin: 0 auto;
 	padding-left: var(--padding-side);
 	padding-right: var(--padding-side);
 
@@ -161,7 +162,7 @@ p,
 .nav {
 	font-size: var(--size-h3);
 	font-family: var(--font-secundary);
-	font-weight: var(--font-weight);
+	font-weight: var(--font-weight-nav);
 
 	.mobile & {
 		font-size: var(--size-mobile-p);
