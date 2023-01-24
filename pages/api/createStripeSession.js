@@ -1,9 +1,7 @@
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
 async function CreateStripeSession(req, res) {
-    console.log(req.body)
   const { items, email } = req.body;
-  console.log('api',items, email)
 
 const redirectURL = "http://localhost:3000"
 const transformedItem = items.map((product, index) => {
@@ -31,8 +29,6 @@ const session = await stripe.checkout.sessions.create({
     images: JSON.stringify(transformedItem.map((item) => item.image)),
   },
 });
-
-console.log(session)
 
 res.status(200).json({ id: session.id });
 };

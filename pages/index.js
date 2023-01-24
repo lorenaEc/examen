@@ -1,7 +1,7 @@
 import { useDevices } from "../src/utils/LayoutHandler"
 import Wordpress from "../src/utils/Wordpress"
 import Woocommerce from "../src/WooCommerce"
-import BlockRenderer from "../src/BlockRenderer/blockrenderer"
+import BlockRenderer from "../src/BlockRenderer/Blockrenderer"
 
 
 

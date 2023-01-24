@@ -1,7 +1,7 @@
 import { LayoutHandler } from '../src/utils/LayoutHandler'
 import Menu from '../src/components/menu'
 import Footer from '../src/components/footer'
-import PreFooter from '../src/components/preFooter'
+import PreFooter from '../src/components/PreFooter'
 import '../styles/style.scss'
 import {  useState, useMemo, useEffect } from 'react'
 import { CartContext } from '../src/Context/cartContext'

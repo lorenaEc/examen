@@ -1,6 +1,6 @@
 import React from 'react'
 import Wordpress from '../src/utils/Wordpress'
-import BlockRenderer from '../src/BlockRenderer/blockrenderer'
+import BlockRenderer from '../src/BlockRenderer/Blockrenderer'
 
 //Get current page by slug
 

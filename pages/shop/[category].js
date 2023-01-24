@@ -1,6 +1,6 @@
 import React from "react"
 import Woocommerce from "../../src/WooCommerce"
-import BlockRenderer from "../../src/BlockRenderer/blockrenderer";
+import BlockRenderer from "../../src/BlockRenderer/Blockrenderer";
 
 
 
@@ -21,7 +21,6 @@ export async function getServerSideProps(context){
 
 
 export default function Category(props) {
-    console.log(props)
     return (
          <>
             <BlockRenderer blocks={props.category?.acf?.block} />
