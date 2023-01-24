@@ -9,6 +9,7 @@ function MobileMenu({ active, setToggle }) {
     //Closing menu
     const close = () => {
         setToggle(false)
+        setcategoryOpen(false);
     }
     //Open and closing Category dropdown
     const [categoryOpen, setcategoryOpen] = useState(false)
@@ -28,13 +29,17 @@ function MobileMenu({ active, setToggle }) {
                     <div className="dropDownContainer">
                         <div className="h3" onClick={toggleCategory}>Kategorier</div>
                         <div className={`dropDownContent ${categoryOpen ? 'open' : ''}`}>
-                            <Link className="dropDownItem" href={"/shop/taklampor"}><span className="h4">Taklampor</span></Link>
-                            <Link className="dropDownItem" href={"/shop/bordslampor"}><span className="h4">Bordslapor</span></Link>
-                            <Link className="dropDownItem" href={"/shop/golvlampor"}><span className="h4">Golvlampor</span></Link>
+                            <Link onClick={close} className="dropDownItem" href={"/shop/taklampor"}><span className="h4">Taklampor</span></Link>
+                            <Link onClick={close} className="dropDownItem" href={"/shop/bordslampor"}><span className="h4">Bordslapor</span></Link>
+                            <Link onClick={close} className="dropDownItem" href={"/shop/golvlampor"}><span className="h4">Golvlampor</span></Link>
                         </div>
                     </div>
-                    <Link className="h3" href={'/om-oss'}>Om oss</Link>
-                    <Link className="h3" href={'/kontakt'}>Kontakt</Link>
+                    <Link onClick={close} className="h3" href={'/om-oss'}>Om oss</Link>
+                    <Link onClick={close} className="h3" href={'/kontakt'}>Kontakt</Link>
+                </div>
+                <div className='socials'>
+                    <img src='/icons/facebook.svg'/>
+                    <img src='/icons/instagram.svg'/>
                 </div>
             </div>
         </Styled>
@@ -72,7 +77,8 @@ opacity: 0;
         position: absolute;
     }
 .mobileContainer{
-    width: 55vh;
+    width: 100%;
+    max-width:500px;
     height: 100vh;
     position: absolute;
     background-color: var(--color-beige);
@@ -110,9 +116,11 @@ opacity: 0;
             height: 0px;
             gap: 20px;
             overflow: hidden;
+            
            .dropDownItem{
             text-decoration: none;
             color:var(--color-dark-green);
+            margin-right:20px;
             text-align: end;
            }
             &.open {
@@ -128,6 +136,15 @@ opacity: 0;
             display: flex;
             align-items: center;
             justify-content: flex-end;
+        }
+    }
+
+    .socials{
+        margin-top: 30px;
+
+        img{
+            width:40px;
+            height:40px;
         }
     }
 }
