@@ -62,7 +62,6 @@ background-position: center;
         
         .contained {
         height: 75%;
-        width: 100vw;
         z-index: 3;
 
         .containerCenter {

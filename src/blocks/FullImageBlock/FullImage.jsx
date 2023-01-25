@@ -10,8 +10,8 @@ function FullImage({image, title, textColor, button} ) {
     }}>
         <div className='contained'>
         <div className='wrapper'>
-          {title && <div className='h2' style={{}}>{title}</div>}
-          {button.link && button.linkTitle && <Link className='btn' href={button.link}>{button.linkText}</Link>}
+          {title && <div className='h2'>{title}</div>}
+          {button.link && <Link className='btn' href={button.link}>{button.linkTitle}</Link>}
           </div>
         </div>
     </Style>
