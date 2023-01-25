@@ -6,10 +6,12 @@ import axios from "axios";
 import styled from "styled-components";
 import React from 'react'
 import Image from "next/image";
+import { useRouter } from "next/router";
 
 function Checkout() {
-
     const { cart, setcart } = useContext(CartContext)
+    const router = useRouter();
+    const { status } = router.query;
 
     //POST stripe api
     const createCheckOutSession = async () => {
@@ -43,6 +45,22 @@ function Checkout() {
   });
   
  const formatPrice = formatter.format(total)
+
+
+ if(status === 'success') {
+
+    return(
+        <div className='bg-green-100 text-green-700 p-2 rounded border mb-2 border-green-700'>
+        Payment Successful
+      </div>
+    )
+ } else if (status === 'cancel') {
+    return(
+        <div className='bg-green-100 text-green-700 p-2 rounded border mb-2 border-green-700'>
+        Payment Successful
+      </div>
+    )
+ }
 
   return (
     <Style>

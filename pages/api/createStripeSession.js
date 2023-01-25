@@ -23,8 +23,8 @@ const session = await stripe.checkout.sessions.create({
   payment_method_types: ['card'],
   line_items: transformedItem,
   mode: 'payment',
-  success_url: redirectURL + '?status=success',
-  cancel_url: redirectURL + '?status=cancel',
+  success_url: redirectURL + '/receipt?status=success',
+  cancel_url: redirectURL + '/receipt?status=cancel',
   metadata: {
     images: JSON.stringify(transformedItem.map((item) => item.image)),
   },
