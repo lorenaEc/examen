@@ -4,7 +4,7 @@ const secret = process.env.NEXT_PUBLIC_CONSUMER_SECRET
 
 export default class Woocommerce {
     static async getCategories() {
-        const data = await fetch(`${url}/wp-json/wc/v3/products/categories?consumer_key=${key}&consumer_secret=${secret}&per_page=6`)
+        const data = await fetch(`${url}/wp-json/wc/v3/products/categories?consumer_key=${key}&consumer_secret=${secret}&per_page=9`)
         const dataJson = await data.json()
 
         return dataJson     

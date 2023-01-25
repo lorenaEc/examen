@@ -9,6 +9,7 @@ import Image from "next/image";
 
 
 export default function SingleProduct({ product }) {
+  console.log(product)
   const { cart, setcart } = useContext(CartContext)
   const [qty, setQty] = useState(1)
 
@@ -47,7 +48,15 @@ const formatPrice = formatter.format(product.price)
             <h2>{product.name}</h2>
             <h5 className="h4">{formatPrice} </h5>
             <div className="description" dangerouslySetInnerHTML={{ __html: product.short_description }}></div>
-
+            {product.stock_quantity > 5 &&
+            <div className="stock green">Finns i lager</div>
+          }
+          {product.stock_quantity < 5 && product.stock_quantity > 0 &&
+            <div className="stock yellow">Få kvar i lager</div>
+          }
+          {product.stock_quantity === 0 &&
+            <div className="stock red">Slut i lager</div>
+          }
             <div className="qtyBox">
               <div className="qty">
                 <div className="min" onClick={() => Cart.decrementQty(qty, setQty)} ><b>-</b></div>
@@ -158,6 +167,22 @@ padding-top: 200px;
       flex-direction: column;
       gap:20px;
       justify-content: center;
+
+      .stock {
+        font-weight: 500;
+
+        &.green {
+          color: darkgreen;
+        }
+
+        &.yellow {
+          color: darkorange;
+        }
+
+        &.red {
+          color: darkred;
+        }
+      }
 
       .mobile &{
         margin-top: 50px;
