@@ -18,7 +18,7 @@ return (
             <div className="infoContainer">
                 <h3>Information</h3>
                 <Link href={"/om-oss"}><span className="p">Om oss</span></Link>
-                <Link href={"/login"}><span className="p">Logga in</span></Link>       
+                <Link href={"/checkout"}><span className="p">Checkout</span></Link>       
                 <Link href={"/kontakt"}><span className="p">Kontakta oss</span></Link>
             </div>
 
