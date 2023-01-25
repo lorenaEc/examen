@@ -5,7 +5,7 @@ import styled from "styled-components";
 import { useContext } from "react";
 import { CartContext } from "../../src/Context/cartContext";
 
-function index() {
+function Receipt() {
     const { cart, setcart } = useContext(CartContext)
     const router = useRouter();
     const { status } = router.query;
@@ -89,6 +89,6 @@ overflow: hidden;
 }
 `
 
-export default index
+export default Receipt
 
  
